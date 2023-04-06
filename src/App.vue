@@ -1,35 +1,37 @@
 <template>
   <div :id="$style.app">
-    <h1>{{ title }}</h1>
-    <ButtonAll @:click="increment" type="button" outlined>click me</ButtonAll>
+    <ApartmentsList :items="apartments">
+      <template v-slot:title>Title</template>
+      <template v-slot:apartment="{ apartment }">
+        <ApartmentsItem
+          :key="apartment.id"
+          :descr="apartment.descr"
+          :rating="apartment.rating"
+          :imgSrc="apartment.imgUrl"
+          :price="apartment.p" /></template
+    ></ApartmentsList>
   </div>
 </template>
 
 <script>
-import ButtonAll from "./components/Button";
+import ApartmentsList from "./components/apartment/ApartmentsList";
+import ApartmentsItem from "./components/apartment/ApartmentsItem";
 
+import apartments from "./components/apartment/apartaments";
 export default {
   name: "App",
-  components: { ButtonAll },
+  components: { ApartmentsList, ApartmentsItem },
   data() {
-    return { amoutOfClicks: 0 };
-  },
-  computed: {
-    title() {
-      return `Amout of clicks ${this.amoutOfClicks}`;
-    },
-  },
-  methods: {
-    increment() {
-      this.amoutOfClicks += 1;
-    },
+    return {
+      apartments,
+    };
   },
 };
 </script>
 
 <style module>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Montserrat, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
