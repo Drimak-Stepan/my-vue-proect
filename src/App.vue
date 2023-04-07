@@ -1,7 +1,8 @@
 <template>
   <div :id="$style.app">
+    <CustomSelect :items="[name, label]" />
     <ApartmentsList :items="apartments">
-      <template v-slot:title>Title</template>
+      <!-- <template v-slot:title>Title</template> -->
       <template v-slot:apartment="{ apartment }">
         <ApartmentsItem
           :key="apartment.id"
@@ -16,11 +17,11 @@
 <script>
 import ApartmentsList from "./components/apartment/ApartmentsList";
 import ApartmentsItem from "./components/apartment/ApartmentsItem";
-
+import CustomSelect from "./components/shared/CustomSelect";
 import apartments from "./components/apartment/apartaments";
 export default {
   name: "App",
-  components: { ApartmentsList, ApartmentsItem },
+  components: { ApartmentsList, ApartmentsItem, CustomSelect },
   data() {
     return {
       apartments,
