@@ -28,7 +28,7 @@ import ApartmentsList from "../components/apartment/ApartmentsList";
 import ApartmentsItem from "../components/apartment/ApartmentsItem";
 import ApartmentsFilterForm from "../components/apartment/ApartmentsFilterForm";
 import Container from "../components/shared/Container";
-//   import { getApartmentsList } from '../services/apartments.service';
+import { getApartmentsList } from "../services/apartments.service";
 import apartments from "../components/apartment/apartaments";
 
 export default {
@@ -53,14 +53,15 @@ export default {
       return this.filterByCityName(this.filterByPrice(this.apartments));
     },
   },
-  // async created() {
-  //   try {
-  //     const { data } = await getApartmentsList();
-  //     this.apartments = data;
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // },
+  async created() {
+    try {
+      const { data } = await getApartmentsList();
+      // this.apartments = data;
+      console.log("data", data);
+    } catch (error) {
+      console.error(error);
+    }
+  },
   methods: {
     filter({ city, price }) {
       this.filters.city = city;

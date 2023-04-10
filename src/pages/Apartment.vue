@@ -21,6 +21,7 @@ import ApartmentsOwner from "../components/apartment/ApartmentsOwner";
 import apartaments from "../components/apartment/apartaments";
 import Reviews from "../components/reviews";
 import reviewsList from "../components/reviews/reviews.json";
+// import { getApartmentById } from "../services/apartments.service";
 
 export default {
   name: "ApartmentPage",
@@ -50,9 +51,10 @@ export default {
   //   try {
   //     const { id } = this.$route.params;
   //     const { data } = await getApartmentById(id);
-  //     this.apartment = data;
+  //     console.log("dataId", data);
+  //     // this.apartment = data;
   //   } catch (error) {
-  //     console.error(error);
+  //     console.error(error.response.statusText);
   //   }
   // },
 };
