@@ -1,7 +1,6 @@
 <template>
   <div class="wrapper-input">
     <input
-      v-on="listeners"
       v-bind="$attrs"
       class="custom-input"
       :class="!isValid && 'custom-input--error'"
@@ -19,7 +18,11 @@ export default {
       error: "",
     };
   },
-  inject: ["form"],
+  inject: {
+    form: {
+      default: null,
+    },
+  },
   inheritAttrs: false,
   props: {
     value: {
@@ -38,7 +41,7 @@ export default {
   computed: {
     listeners() {
       return {
-        ...this.listeners,
+        ...this.$attrs,
         input: (event) => this.$emit("input", event.target.value),
       };
     },

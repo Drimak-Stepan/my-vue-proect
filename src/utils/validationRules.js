@@ -1,3 +1,5 @@
+///checked
+
 export const isRequired = (val) => ({
   hasPassed: !!val,
   message: "Будь ласка введіть дані",

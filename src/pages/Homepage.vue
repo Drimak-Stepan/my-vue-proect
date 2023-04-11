@@ -1,8 +1,5 @@
 <template>
   <main>
-    <!-- <Container>
-      <ApartmentsFilterForm class="apartments-filter" @submit="filter" />
-    </Container> -->
     <Container>
       <ApartmentsFilterForm class="apartments-filter" @submit="filter" />
 
