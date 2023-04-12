@@ -1,3 +1,5 @@
+//checked
+
 <template>
   <div class="apartments-item">
     <div class="apartments-item__inner">

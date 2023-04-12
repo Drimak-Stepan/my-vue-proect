@@ -1,7 +1,8 @@
+//checked
 <template>
   <AuthContainer class="login">
     <MainTitle class="login__title">Логін</MainTitle>
-    <Form ref="form" @submit.prevent="handleSubmit">
+    <Form ref="form" class="login__form" @submit.prevent="handleSubmit">
       <CustomInput
         v-model="formData.email"
         placeholder="Email"
@@ -35,7 +36,7 @@ import {
   passwordValidation,
   isRequired,
 } from "../../../utils/validationRules";
-// import { mapActions } from 'vuex';
+import { mapActions } from "vuex";
 export default {
   name: "ILogin",
   components: {
@@ -70,7 +71,7 @@ export default {
     },
   },
   methods: {
-    // ...mapActions('auth', ['login']),
+    ...mapActions("auth", ["login"]),
     async handleSubmit() {
       const { form } = this.$refs;
       const isFormValid = form.validate();

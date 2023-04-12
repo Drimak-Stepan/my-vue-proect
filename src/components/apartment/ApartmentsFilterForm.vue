@@ -1,3 +1,4 @@
+//checked
 <template>
   <form class="form" @submit.prevent="handleSubmit">
     <CustomSelect :items="cities" v-model="city" class="form__select" />
@@ -58,7 +59,6 @@ export default {
 
 <style lang="scss" scoped>
 .form {
-  padding-top: 120px;
   display: flex;
   &__select {
     margin-right: 30px;

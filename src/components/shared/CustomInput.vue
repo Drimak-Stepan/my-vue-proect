@@ -1,7 +1,11 @@
+//checked
 <template>
   <div class="wrapper-input">
     <input
+      v-on="listeners"
       v-bind="$attrs"
+      @blur="blurHandler"
+      :value="value"
       class="custom-input"
       :class="!isValid && 'custom-input--error'"
     />
@@ -16,6 +20,7 @@ export default {
     return {
       isValid: true,
       error: "",
+      isFirstInput: true,
     };
   },
   inject: {
@@ -48,6 +53,7 @@ export default {
   },
   watch: {
     value() {
+      if (this.isFirstInput) return;
       this.validate();
     },
   },
@@ -55,11 +61,11 @@ export default {
     if (!this.form) return;
     this.form.registerInput(this);
   },
-  beforeUnmount() {
-    if (!this.form) return;
-    this.form.unRegisterInput(this);
-  },
-
+  //!!!
+  // beforeUnmount() {
+  //   if (!this.form) return;
+  //   this.form.unRegisterInput(this);
+  // },
   methods: {
     validate() {
       this.isValid = this.rules.every((rule) => {
@@ -71,7 +77,15 @@ export default {
       });
       return this.isValid;
     },
+    blurHandler() {
+      if (this.isFirstInput) {
+        this.validate();
+      }
+      this.isFirstInput = false;
+    },
     reset() {
+      this.isFirstInput = true;
+      this.isValid = true;
       this.$emit("input", "");
     },
   },
@@ -82,7 +96,7 @@ export default {
 @import "../../assets/scss/variables";
 .wrapper-input {
   position: relative;
-  display: inline-flex;
+  margin-bottom: 15px;
 }
 .custom-input {
   height: 40px;

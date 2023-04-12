@@ -1,3 +1,5 @@
+//checked
+
 <template>
   <div class="star-rating">
     <span

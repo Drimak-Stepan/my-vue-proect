@@ -1,3 +1,4 @@
+//checked
 <template>
   <section class="apartments-owner">
     <h2 class="apartments-owner__title">Інформація про власника:</h2>

@@ -1,3 +1,4 @@
+//checked
 <template>
   <AuthContainer class="registration">
     <MainTitle class="registration__title">Реєстрація</MainTitle>
@@ -36,8 +37,8 @@
         :rules="confirmPassword"
         class="registration__input"
       />
-      <Button class="registration__btn" type="submit" :loading="loading"
-        >Вхід</Button
+      <IButton class="registration__btn" type="submit" :loading="loading"
+        >Вхід</IButton
       >
     </Form>
   </AuthContainer>
@@ -46,7 +47,7 @@
 <script>
 import Form from "../../shared/form";
 import CustomInput from "../../shared/CustomInput";
-import Button from "../../shared/Button";
+import IButton from "../../shared/Button";
 import AuthContainer from "../AuthContainer";
 import MainTitle from "../../shared/MainTitle";
 import {
@@ -54,14 +55,14 @@ import {
   passwordValidation,
   isRequired,
 } from "../../../utils/validationRules";
-// import { mapActions } from "vuex";
+import { mapActions } from "vuex";
 
 export default {
   name: "IRegistration",
   components: {
     Form,
     CustomInput,
-    Button,
+    IButton,
     AuthContainer,
     MainTitle,
   },
@@ -103,7 +104,7 @@ export default {
     },
   },
   methods: {
-    // ...mapActions("auth", ["registerUser"]),
+    ...mapActions("auth", ["registerUser"]),
     async handleSubmit() {
       const { form } = this.$refs;
       const isFormValid = form.validate();

@@ -1,3 +1,5 @@
+//checked
+
 <template>
   <img src="../assets/svg/logo.svg" alt="" />
 </template>

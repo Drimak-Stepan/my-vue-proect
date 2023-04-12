@@ -1,16 +1,21 @@
+//checked not backend
+
 <template>
   <main class="apartment-page">
-    <Container>
-      <div v-if="apartment" class="apartment-page__content">
-        <ApartmentsMainInfo :apartment="apartment" />
-        <div class="apartment-page__additional-info">
-          <ApartmentsOwner
-            class="apartment-page__owner"
-            :owner="apartment.owner"
-          />
-          <Reviews :reviews="reviewsList" />
-        </div></div
-    ></Container>
+    <SectionWithHeaderSpacer>
+      <Container>
+        <div v-if="apartment" class="apartment-page__content">
+          <ApartmentsMainInfo :apartment="apartment" />
+          <div class="apartment-page__additional-info">
+            <ApartmentsOwner
+              class="apartment-page__owner"
+              :owner="apartment.owner"
+            />
+            <Reviews :reviews="reviewsList" />
+          </div>
+        </div>
+      </Container>
+    </SectionWithHeaderSpacer>
   </main>
 </template>
 
@@ -18,10 +23,11 @@
 import Container from "../components/shared/Container";
 import ApartmentsMainInfo from "../components/apartment/ApartmentsMainInfo";
 import ApartmentsOwner from "../components/apartment/ApartmentsOwner";
-import apartaments from "../components/apartment/apartaments";
 import Reviews from "../components/reviews";
+import SectionWithHeaderSpacer from "../components/shared/SectionWithHeaderSpacer";
 import reviewsList from "../components/reviews/reviews.json";
 // import { getApartmentById } from "../services/apartments.service";
+import apartaments from "../components/apartment/apartaments";
 
 export default {
   name: "ApartmentPage",
@@ -30,6 +36,7 @@ export default {
     ApartmentsMainInfo,
     ApartmentsOwner,
     Reviews,
+    SectionWithHeaderSpacer,
   },
   computed: {
     apartment() {
@@ -62,7 +69,6 @@ export default {
 
 <style lang="scss" scoped>
 .apartment-page {
-  padding-top: 120px;
   padding-bottom: 55px;
   &__content {
     display: flex;

@@ -1,22 +1,27 @@
-<template>
-  <main>
-    <Container>
-      <ApartmentsFilterForm class="apartments-filter" @submit="filter" />
+//checked but not backend
 
-      <p v-if="!filteredApartments.length">Not found</p>
-      <ApartmentsList v-else :items="filteredApartments">
-        <template v-slot:apartment="{ apartment }">
-          <ApartmentsItem
-            :key="apartment.id"
-            :id="apartment.id"
-            :descr="apartment.descr"
-            :rating="apartment.rating"
-            :imgSrc="apartment.imgUrl"
-            :price="apartment.price"
-          />
-        </template>
-      </ApartmentsList>
-    </Container>
+<template>
+  <main class="homepage">
+    <SectionWithHeaderSpacer>
+      <Container>
+        <ApartmentsFilterForm class="apartments-filter" @submit="filter" />
+      </Container>
+      <Container>
+        <p v-if="!filteredApartments.length">Not found</p>
+        <ApartmentsList v-else :items="filteredApartments">
+          <template v-slot:apartment="{ apartment }">
+            <ApartmentsItem
+              :key="apartment.id"
+              :id="apartment.id"
+              :descr="apartment.descr"
+              :rating="apartment.rating"
+              :imgSrc="apartment.imgUrl"
+              :price="apartment.price"
+            />
+          </template>
+        </ApartmentsList>
+      </Container>
+    </SectionWithHeaderSpacer>
   </main>
 </template>
 
@@ -26,6 +31,8 @@ import ApartmentsItem from "../components/apartment/ApartmentsItem";
 import ApartmentsFilterForm from "../components/apartment/ApartmentsFilterForm";
 import Container from "../components/shared/Container";
 import { getApartmentsList } from "../services/apartments.service";
+import SectionWithHeaderSpacer from "../components/shared/SectionWithHeaderSpacer";
+
 import apartments from "../components/apartment/apartaments";
 
 export default {
@@ -34,6 +41,7 @@ export default {
     ApartmentsList,
     ApartmentsItem,
     ApartmentsFilterForm,
+    SectionWithHeaderSpacer,
     Container,
   },
   data() {
@@ -54,7 +62,7 @@ export default {
     try {
       const { data } = await getApartmentsList();
       // this.apartments = data;
-      console.log("data", data);
+      console.log("data backend", data);
     } catch (error) {
       console.error(error);
     }

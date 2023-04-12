@@ -1,3 +1,4 @@
+//checked
 <template>
   <section class="reviews-item">
     <ReviewsHeading :rating="review.rating" :author="review.author" />

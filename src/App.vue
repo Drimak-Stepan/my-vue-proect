@@ -12,7 +12,7 @@
 
 <script>
 import AppFooter from "./components/Footer";
-import AppHeader from "./components/Header";
+import AppHeader from "./components/header";
 import Notifications from "./components/notifications";
 export default {
   name: "App",

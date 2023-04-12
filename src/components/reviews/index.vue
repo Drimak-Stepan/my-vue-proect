@@ -1,3 +1,4 @@
+//checked
 <template>
   <section class="reviews">
     <div class="reviews__heading">
