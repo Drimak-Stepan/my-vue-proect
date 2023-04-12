@@ -1,12 +1,8 @@
 <template>
   <div class="orders-list">
-    <p v-if="!items.length">Замовлень немає</p>
+    <p v-if="!items.length">Замовлення не точні, бекенд не справний</p>
     <template v-else>
-      <OrdersItem
-        v-for="order in items"
-        :key="order.id"
-        :order="order.apartment"
-      />
+      <OrdersItem v-for="order in items" :key="order.id" :order="order" />
     </template>
   </div>
 </template>

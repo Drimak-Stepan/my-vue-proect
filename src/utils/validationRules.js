@@ -1,7 +1,7 @@
 ///checked
 
 export const isRequired = (val) => ({
-  hasPassed: !val,
+  hasPassed: val,
   message: "Будь ласка введіть дані",
 });
 
@@ -16,6 +16,6 @@ export const emailValidation = (val) => ({
 });
 
 export const passwordValidation = (val) => ({
-  hasPassed: /^(?=.*[A-Za-z])(?=.*[\d])[a-zA-Z0-9]{7,256}$/.test(val),
-  message: "Пароль повиннен містити одну цифру і один символ",
+  hasPassed: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(val),
+  message: "Minimum eight characters, at least one letter and one number",
 });

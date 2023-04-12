@@ -33,7 +33,7 @@
         placeholder="Confirm password"
         autocomplete="current-password"
         type="password"
-        name="password"
+        name="confirmPassword"
         :rules="confirmPassword"
         class="registration__input"
       />
@@ -109,7 +109,7 @@ export default {
       const { form } = this.$refs;
       const isFormValid = form.validate();
       const { name, password, email } = this.formData;
-
+      console.log("data", this.formData);
       if (isFormValid) {
         try {
           this.loading = true;

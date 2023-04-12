@@ -75,6 +75,7 @@ export default {
     async handleSubmit() {
       const { form } = this.$refs;
       const isFormValid = form.validate();
+
       if (isFormValid) {
         try {
           this.loading = true;

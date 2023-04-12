@@ -16,7 +16,7 @@
 import CustomInput from "../shared/CustomInput";
 import CustomSelect from "../shared/CustomSelect";
 import SubmitButton from "../shared/Button";
-import { isRequired, charLimit } from "../../utils/validationRules";
+// import { isRequired, charLimit } from "../../utils/validationRules";
 
 export default {
   components: {
@@ -31,12 +31,12 @@ export default {
     };
   },
   computed: {
-    rules() {
-      return [isRequired, charLimit(10)];
-    },
+    // rules() {
+    //   return [isRequired, charLimit(10)];
+    // },
     cities() {
       return [
-        { value: "", label: "Місто", selected: true },
+        { modelValue: "", label: "Місто", selected: true },
         "Kyiv",
         "Odesa",
         "Poltava",
@@ -51,7 +51,10 @@ export default {
 
   methods: {
     handleSubmit() {
-      this.$emit("submit", { city: this.city, price: this.price });
+      this.$emit("submit", {
+        city: this.city,
+        price: this.price,
+      });
     },
   },
 };

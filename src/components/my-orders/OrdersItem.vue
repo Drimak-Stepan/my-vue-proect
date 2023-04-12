@@ -2,16 +2,16 @@
   <div class="orders-item">
     <img
       class="orders-item__photo"
-      :src="order.imgUrl"
-      alt="фото апартаментов"
+      src="/img/apartments/apartment-1.jpg"
+      alt="фото апартаментiв"
     />
     <div class="orders-item__details">
       <div class="orders-item__text">
-        <h2 class="orders-item__title">{{ order.title }}</h2>
-        <p class="orders-item__location">{{ order.location.city }}</p>
+        <h2 class="orders-item__title">{{ order.data }}</h2>
+        <p class="orders-item__location">{{ order.id }}</p>
       </div>
       <div class="orders-item__cost">
-        <span class="orders-item__price">UAH {{ order.price }}</span> за ніч
+        <span class="orders-item__price">not found</span> за ніч
       </div>
     </div>
   </div>

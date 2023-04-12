@@ -5,7 +5,7 @@
       v-on="listeners"
       v-bind="$attrs"
       @blur="blurHandler"
-      :value="value"
+      :value="modelValue"
       class="custom-input"
       :class="!isValid && 'custom-input--error'"
     />
@@ -30,7 +30,7 @@ export default {
   },
   inheritAttrs: false,
   props: {
-    value: {
+    modelValue: {
       type: String,
       default: "",
     },
@@ -43,11 +43,12 @@ export default {
       default: () => [],
     },
   },
+  emits: ["update:modelValue"],
   computed: {
     listeners() {
       return {
         ...this.$attrs,
-        input: (event) => this.$emit("input", event.target.value),
+        input: (event) => this.$emit("update:modelValue", event.target.value),
       };
     },
   },
@@ -61,20 +62,22 @@ export default {
     if (!this.form) return;
     this.form.registerInput(this);
   },
-  //!!!
-  // beforeUnmount() {
-  //   if (!this.form) return;
-  //   this.form.unRegisterInput(this);
-  // },
+  beforeUnmount() {
+    if (!this.form) return;
+    this.form.unRegisterInput(this);
+  },
   methods: {
     validate() {
       this.isValid = this.rules.every((rule) => {
-        const { hasPassed, message } = rule(this.value);
+        const { hasPassed, message } = rule(this.modelValue);
+
         if (!hasPassed) {
           this.error = message || this.errorMessage;
         }
+
         return hasPassed;
       });
+
       return this.isValid;
     },
     blurHandler() {
@@ -86,7 +89,7 @@ export default {
     reset() {
       this.isFirstInput = true;
       this.isValid = true;
-      this.$emit("input", "");
+      this.$emit("update:modelValue", "");
     },
   },
 };

@@ -33,7 +33,7 @@ import Container from "../components/shared/Container";
 import { getApartmentsList } from "../services/apartments.service";
 import SectionWithHeaderSpacer from "../components/shared/SectionWithHeaderSpacer";
 
-import apartments from "../components/apartment/apartaments";
+import apartments from "../components/apartment/apartaments"; //backend wrong
 
 export default {
   name: "App",

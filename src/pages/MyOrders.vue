@@ -4,7 +4,7 @@
       <Container>
         <section class="my-orders-page__content">
           <MainTitle>Замовлення</MainTitle>
-          <OrdersList :items="apartaments" />
+          <OrdersList :items="orders" />
         </section>
       </Container>
     </SectionWithHeaderSpacer>
@@ -16,8 +16,7 @@ import Container from "../components/shared/Container";
 import SectionWithHeaderSpacer from "../components/shared/SectionWithHeaderSpacer";
 import MainTitle from "../components/shared/MainTitle";
 import OrdersList from "../components/my-orders/OrdersList";
-// import { getOrders } from "../services/order.service";
-import apartaments from "../components/apartment/apartaments";
+import { getOrders } from "../services/order.service";
 export default {
   name: "MyOrdersPage",
   components: {
@@ -27,20 +26,20 @@ export default {
     OrdersList,
   },
   data() {
-    return { apartaments };
+    return { orders: [] };
   },
-  //   async created() {
-  //     try {
-  //       const { data } = await getOrders();
-  //       //   this.orders = data;
-  //     } catch (error) {
-  //       this.$notify({
-  //         type: "error",
-  //         title: "Виникла помилка",
-  //         text: error.message,
-  //       });
-  //     }
-  //   },
+  async created() {
+    try {
+      const { data } = await getOrders();
+      this.orders = data;
+    } catch (error) {
+      this.$notify({
+        type: "error",
+        title: "Виникла помилка",
+        text: error.message,
+      });
+    }
+  },
 };
 </script>
 
