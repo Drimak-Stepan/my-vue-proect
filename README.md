@@ -1,4 +1,4 @@
-# my-vue-proect
+# my-vue-proect -навчальни проект з VUE
 
 ## Project setup
 ```
